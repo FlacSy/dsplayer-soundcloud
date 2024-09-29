@@ -40,6 +40,9 @@ class SoundCloudPlugin(PluginInterface):
         self.debug_print(f"Updating settings: {settings}")
         self.settings.update(settings)
 
+    def get_plugin_type(self) -> str:
+        return "extractor"
+    
     async def search(self, data: str, engine: EngineInterface) -> List[Dict[str, Any]]:
         self.debug_print(f"Searching with data: {data}")
         track_info = await self._search(data)
