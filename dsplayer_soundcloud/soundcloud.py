@@ -45,7 +45,7 @@ class SoundCloudPlugin(PluginInterface):
     
     async def search(self, data: str, engine: EngineInterface) -> List[Dict[str, Any]]:
         self.debug_print(f"Searching with data: {data}")
-        track_info = await self._search(data)
+        track_info_list = await self._search(data)
         for track_info in track_info_list:
             yield track_info
 
@@ -54,7 +54,7 @@ class SoundCloudPlugin(PluginInterface):
         ydl_opts = {
             'format': 'bestaudio/best',
             'quiet': True,
-            'dumpjson': True
+            'dump-json': True
         }
 
         command = [
